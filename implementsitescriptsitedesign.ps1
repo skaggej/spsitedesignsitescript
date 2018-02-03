@@ -128,4 +128,23 @@ $siteScriptActions = '
 Add-SPOSiteScript -Title "Sample Theme Site Script" -Content $siteScriptActions -Description "Site Script for applying the Sample Theme"
     
     
-    
+$applyFusePnPTemplate = '{
+    "$schema": "schema.json",
+    "actions": [
+    {
+            "verb": "triggerFlow",
+            "url": "https://prod-22.westus.logic.azure.com:443/workflows/0ae6c892ba8e4043a705a1bd4ad55927/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ERKPeWWvVGNJDyoOCDyjwl5krKNxNV0cCju3tGM5PqA",
+            "name": "Apply Fuse PnP Template",
+            "parameters": {
+                "event":"",
+                "product":""
+            }
+    }
+    ],
+    "bindata": {},
+    "version": 1
+}'
+
+Add-SPOSiteScript -Title "Apply Fuse PnP Template" -Content $applyFusePnPTemplate
+Get-SPOSiteScript
+Add-SPOSiteDesign -Title "Fuse" -SiteScripts f6996e46-3b42-4ce6-85ba-2beccfc750a3 -WebTemplate 64
