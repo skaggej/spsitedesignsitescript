@@ -35,7 +35,7 @@ $themepalette = @{
 }
 
 # Add the theme
-Add-SPOTheme -Name "Sample Theme" -Palette $themepalette -IsInverted $false
+Add-SPOTheme -Name "Project Site Theme" -Palette $themepalette -IsInverted $true
 
 $siteScriptActions = '
 {
@@ -43,7 +43,7 @@ $siteScriptActions = '
         "actions": [
             {
                 "verb": "applyTheme",
-                "themeName": "Sample Theme"
+                "themeName": "Project Site Theme"
             },
             {
                "verb": "addNavLink",
@@ -57,17 +57,17 @@ $siteScriptActions = '
 }
 '
 
-Add-SPOSiteScript -Title "Sample Theme Site Script" -Content $siteScriptActions -Description "Site Script for applying the Sample Theme"
+Add-SPOSiteScript -Title "Apply Project Theme Site Script" -Content $siteScriptActions -Description "Site Script for applying the Project Theme"
 
 # Add Site Design
 # 68 is the id of the web template for modern communication sites / 64 is the id of the web template for modern team sites
 Add-SPOSiteDesign `
--Title "A Sample Site Design" `
+-Title "Project Site" `
 -WebTemplate "64" `
--SiteScripts "e7cb3c62-4e7b-4fbe-8391-f5525f17ab7b" `
--Description "This is the description of the sample site design" `
--PreviewImageAltText "Site design preview image" #`
--IsDefault
+-SiteScripts "5ceecc70-e301-427e-911a-a798b75dd24d" `
+-Description "Create a new project site" `
+-PreviewImageAltText "Project Site Image#" #`
+#-IsDefault
 
 
     
@@ -94,11 +94,7 @@ $applyFusePnPTemplate = '{
 }'
 Add-SPOSiteScript -Title "Apply Fuse PnP Template" -Content $applyFusePnPTemplate
 Get-SPOSiteScript
-Add-SPOSiteDesign -Title "Fuse" -SiteScripts f6996e46-3b42-4ce6-85ba-2beccfc750a3 -WebTemplate 64
-
-
-
-
+Add-SPOSiteDesign -Title "Fuse" -SiteScripts 72b3a553-82d7-4007-863c-43c64edcf14f -WebTemplate 64
 
 #Hasn't worked yet
 $site_script = @'
